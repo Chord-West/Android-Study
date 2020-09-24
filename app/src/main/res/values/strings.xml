@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">My Application</string>
-    <string name="edit_message">메세지를 입력하세요.</string>
-    <string name="button_send">보내기</string>
-</resources>
