@@ -7,33 +7,52 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/select_page_title"
         android:layout_width="287dp"
         android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="611dp"
-        android:text="hi" />
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="614dp"
+        android:text="상품선택페이지"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30dp" />
 
     <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_height="100dp" />
+        android:id="@+id/product_select_view"
+        android:layout_width="316dp"
+        android:layout_height="248dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="274dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/basket_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="69dp"
+        android:layout_marginBottom="90dp"
+        android:text="장바구니" />
+
+    <Button
+        android:id="@+id/payment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="208dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginBottom="61dp"
-        android:text="Button" />
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="91dp"
+        android:text="구매" />
 </RelativeLayout>
