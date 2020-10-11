@@ -23,7 +23,7 @@ public class MyFirstAdapter extends BaseAdapter {
         mWeatherImageMap.put("구름", R.drawable.ic_launcher_background);
         mWeatherImageMap.put("비", R.drawable.ic_launcher_background);
         mWeatherImageMap.put("눈", R.drawable.ic_launcher_background);
-}
+    }
 
     @Override
     public int getCount() {

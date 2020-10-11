@@ -1,9 +1,13 @@
 package com.example.personalassignment;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,25 +16,53 @@ public class ProductAdapter extends BaseAdapter {
     private Map<String,Integer> mProductImageMap;
 
     public ProductAdapter(List<Product> data){
-
+        this.mData=data;
+        mProductImageMap = new HashMap<>();
+        mProductImageMap.put("outer",R.drawable.outer);
+        mProductImageMap.put("top",R.drawable.top);
+        mProductImageMap.put("bottom",R.drawable.bottom);
     }
     @Override
     public int getCount() {
-        return 0;
+        return mData.size();
     }
 
     @Override
+
     public Object getItem(int position) {
-        return null;
+        return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        ViewHolder holder;
+        if(convertView==null){
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product,parent,false);
+            ImageView productImage = convertView.findViewById(R.id.product_image);
+            TextView productTitle= convertView.findViewById(R.id.product_title);
+            TextView productPrice= convertView.findViewById(R.id.product_price);
+            holder.productImage=productImage;
+            holder.productTitle=productTitle;
+            holder.productPrice= productPrice;
+            convertView.setTag(holder);
+        }else{
+            holder = (ViewHolder) convertView.getTag();
+        }
+        Product product = mData.get(position);
+        holder.productTitle.setText(product.getTitle());
+        holder.productPrice.setText(product.getPrice());
+        holder.productImage.setImageResource(mProductImageMap.get(product.getCategory()));
+        return convertView;
+    }
+    static class ViewHolder{
+        ImageView productImage;
+        TextView productTitle;
+        TextView productPrice;
     }
 }
