@@ -8,51 +8,56 @@
 
     <TextView
         android:id="@+id/select_page_title"
-        android:layout_width="287dp"
-        android:layout_height="85dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="614dp"
-        android:text="상품선택페이지"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30dp" />
-
-    <ListView
-        android:id="@+id/product_select_view"
-        android:layout_width="316dp"
-        android:layout_height="248dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="209dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="274dp" />
-
-    <Button
-        android:id="@+id/basket_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="상품선택페이지"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:visibility="visible" />
+
+    <ListView
+        android:id="@+id/product_select_view"
+        android:layout_width="wrap_content"
+        android:layout_height="353dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="69dp"
-        android:layout_marginBottom="90dp"
-        android:text="장바구니" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="200dp" />
 
     <Button
         android:id="@+id/payment_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/cart_btn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="BUY IT NOW" />
+
+    <Button
+        android:id="@+id/cart_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="91dp"
-        android:text="구매" />
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:text="ADD TO CART" />
+
+
+
 </RelativeLayout>

@@ -4,8 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +41,7 @@ public class ProductAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
@@ -47,9 +49,11 @@ public class ProductAdapter extends BaseAdapter {
             ImageView productImage = convertView.findViewById(R.id.product_image);
             TextView productTitle= convertView.findViewById(R.id.product_title);
             TextView productPrice= convertView.findViewById(R.id.product_price);
+            CheckBox checkBox = convertView.findViewById(R.id.checkBox);
             holder.productImage=productImage;
             holder.productTitle=productTitle;
             holder.productPrice= productPrice;
+            holder.checkBox=checkBox;
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -58,11 +62,21 @@ public class ProductAdapter extends BaseAdapter {
         holder.productTitle.setText(product.getTitle());
         holder.productPrice.setText(product.getPrice());
         holder.productImage.setImageResource(mProductImageMap.get(product.getCategory()));
+        holder.checkBox.setChecked(product.isCheck());
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean newState = !mData.get(position).isCheck();
+                mData.get(position).setCheck(newState);
+                System.out.println(newState);
+            }
+        });
         return convertView;
     }
     static class ViewHolder{
         ImageView productImage;
         TextView productTitle;
         TextView productPrice;
+        CheckBox checkBox;
     }
 }

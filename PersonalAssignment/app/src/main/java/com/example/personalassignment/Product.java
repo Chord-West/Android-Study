@@ -4,11 +4,21 @@ public class Product {
     private String title;
     private String price;
     private String category;
+    private boolean check=false;
     public Product(String title, String price, String category) {
         this.title = title;
         this.price = price;
         this.category = category;
     }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
     public String getCategory() {
         return category;
     }
