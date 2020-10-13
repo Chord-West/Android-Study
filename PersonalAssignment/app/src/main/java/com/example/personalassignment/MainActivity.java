@@ -2,6 +2,7 @@ package com.example.personalassignment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Button paymentBtn=findViewById(R.id.payment_btn);
         Button cartBtn=findViewById(R.id.cart_btn);
         final ArrayList<Product> data = new ArrayList<>();
-        final ArrayList<Product> checkedData = new ArrayList<>();
+
 
 //        database에 저장된 내용 for문으로 list에 뿌리기
 //        for(int i=0; i< databaseList().length;i++){
@@ -37,18 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView listView = findViewById(R.id.product_select_view);
         listView.setAdapter(adapter);
-        paymentBtn.setOnClickListener(new View.OnClickListener() {
+        cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for(Product product : data){
                     if(product.isCheck()) {
                         Toast.makeText(MainActivity.this, product.isCheck() + "아이템선택", Toast.LENGTH_SHORT).show();
-                        checkedData.add(product);
                         db.addCartData(product.getTitle(),product.getPrice(),product.getCategory());
                     }
                 }
-                System.out.println(checkedData);
-
+                Intent intent = new Intent(MainActivity.this,CartPageActivity.class);
+                startActivity(intent);
             }
         });
     }

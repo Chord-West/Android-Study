@@ -1,5 +1,6 @@
 package com.example.personalassignment.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Product {
@@ -7,10 +8,25 @@ public class Product {
     private String price;
     private String category;
     private boolean check=false;
+    private String key;
     public Product(String title, String price, String category) {
         this.title = title;
         this.price = price;
         this.category = category;
+    }
+    public Product(String title, String price, String category,String key) {
+        this.title = title;
+        this.price = price;
+        this.category = category;
+        this.key=key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public boolean isCheck() {
@@ -53,6 +69,12 @@ public class Product {
                 ", category='" + category + '\'' +
                 '}';
     }
-
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", title);
+        result.put("price", price);
+        result.put("category", category);
+        return result;
+    }
 
 }
