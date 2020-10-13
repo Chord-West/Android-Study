@@ -1,4 +1,4 @@
-package com.example.personalassignment;
+package com.example.personalassignment.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.personalassignment.R;
+import com.example.personalassignment.model.Product;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +22,7 @@ public class ProductAdapter extends BaseAdapter {
     public ProductAdapter(List<Product> data){
         this.mData=data;
         mProductImageMap = new HashMap<>();
-        mProductImageMap.put("outer",R.drawable.outer);
+        mProductImageMap.put("outer", R.drawable.outer);
         mProductImageMap.put("top",R.drawable.top);
         mProductImageMap.put("bottom",R.drawable.bottom);
     }

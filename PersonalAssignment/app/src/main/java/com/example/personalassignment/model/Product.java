@@ -1,4 +1,6 @@
-package com.example.personalassignment;
+package com.example.personalassignment.model;
+
+import java.util.Map;
 
 public class Product {
     private String title;
@@ -51,4 +53,6 @@ public class Product {
                 ", category='" + category + '\'' +
                 '}';
     }
+
+
 }
