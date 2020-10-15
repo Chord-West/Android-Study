@@ -14,8 +14,37 @@
         android:textAlignment="center"
         android:textSize="30sp"/>
     <ListView
+        android:id="@+id/product_cart_view"
         android:layout_width="250dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_marginTop="50px"/>
+    <Button
+        android:id="@+id/cart_delete_btn"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_height="30dp"
+        android:background="@color/colorRed"
+        android:text="Delete"
+        android:textColor="@color/colorWhite"/>
+    <Button
+        android:id="@+id/cart_backhome_btn"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="50dp"
+        android:text="Back to Home"/>
+    <Button
+        android:id="@+id/cart_payment_btn"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="50dp"
+        android:text="payment"/>
+
+
+
 </LinearLayout>

@@ -3,8 +3,15 @@ package com.example.personalassignment;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.personalassignment.adapter.CartAdapter;
+import com.example.personalassignment.adapter.ProductAdapter;
 import com.example.personalassignment.model.DB;
 import com.example.personalassignment.model.Product;
 import com.google.firebase.database.DataSnapshot;
@@ -14,8 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CartPageActivity extends AppCompatActivity {
 
@@ -25,30 +34,41 @@ public class CartPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-        final Map<String,Object> object=new HashMap<>();
         final ArrayList<Product> data = new ArrayList<>();
-        cartDBRef.addValueEventListener(new ValueEventListener() {
+        final ListView listView = findViewById(R.id.product_cart_view);
+        Button movehomeBtn;
+        final Button deleteBtn = findViewById(R.id.cart_delete_btn);
+        Button movepayBtn;
+        ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data.clear();
                 for(DataSnapshot datasnapshot : snapshot.getChildren()) {
-                    object.put(datasnapshot.getKey(), datasnapshot.getValue());
                     Product product = datasnapshot.getValue(Product.class);
-                    System.out.println(product);
-//                    data.add(new Product(datasnapshot.getChildren().toString()));
+                    product.setKey(datasnapshot.getKey());
+                    data.add(product);
                 }
-                for(Product product : data){
+                CartAdapter adapter = new CartAdapter(data);
+                listView.setAdapter(adapter);
+                deleteBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        for(Product product : data){
+                            if(product.isCheck()) {
+                                cartDBRef.child(product.getKey()).removeValue();
 
-                }
+                            }
+                        }
+                    }
+                });
 
-
-                //System.out.println(data);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-        });
-        System.out.println(data);
+        };
+        cartDBRef.addValueEventListener(mValueEventListener);
+        
     }
 
 }

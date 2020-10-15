@@ -9,6 +9,9 @@ public class Product {
     private String category;
     private boolean check=false;
     private String key;
+    public Product(){
+
+    }
     public Product(String title, String price, String category) {
         this.title = title;
         this.price = price;
@@ -20,6 +23,7 @@ public class Product {
         this.category = category;
         this.key=key;
     }
+
 
     public String getKey() {
         return key;

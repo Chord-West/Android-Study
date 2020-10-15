@@ -71,14 +71,11 @@ public class CartAdapter extends BaseAdapter {
                 boolean newState = !mData.get(position).isCheck();
                 mData.get(position).setCheck(newState);
                 System.out.println(newState);
+                String ex=mData.get(position).getKey();
+                System.out.println(ex);
+
             }
         });
         return convertView;
-    }
-    static class ViewHolder{
-        ImageView productImage;
-        TextView productTitle;
-        TextView productPrice;
-        CheckBox checkBox;
     }
 }
