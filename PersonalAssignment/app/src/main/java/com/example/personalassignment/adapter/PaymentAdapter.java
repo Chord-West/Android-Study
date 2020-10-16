@@ -51,9 +51,11 @@ public class PaymentAdapter extends BaseAdapter {
             ImageView productImage = convertView.findViewById(R.id.product_image);
             TextView productTitle= convertView.findViewById(R.id.product_title);
             TextView productPrice= convertView.findViewById(R.id.product_price);
+            CheckBox checkBox = convertView.findViewById(R.id.checkBox);
             holder.productImage=productImage;
             holder.productTitle=productTitle;
             holder.productPrice= productPrice;
+            holder.checkBox=checkBox;
             convertView.setTag(holder);
         }else{
             holder = (ProductAdapter.ViewHolder) convertView.getTag();
@@ -62,6 +64,7 @@ public class PaymentAdapter extends BaseAdapter {
         holder.productTitle.setText(product.getTitle());
         holder.productPrice.setText(product.getPrice());
         holder.productImage.setImageResource(mProductImageMap.get(product.getCategory()));
+        holder.checkBox.setVisibility(convertView.GONE);
         return convertView;
     }
 }

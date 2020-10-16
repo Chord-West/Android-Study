@@ -51,6 +51,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        paymentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Product> conveydata= new ArrayList<>();
+                for (Product product : data) {
+                    if (product.isCheck()) {
+                        conveydata.add(product);
+                    }
+                }
+                Intent intent = new Intent(getApplicationContext(),PayementAcitivity.class);
+                intent.putExtra("conveydata",conveydata);
+                startActivity(intent);
+            }
+        });
     }
 
 }
