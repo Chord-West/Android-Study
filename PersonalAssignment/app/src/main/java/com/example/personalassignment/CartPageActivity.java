@@ -35,15 +35,16 @@ public class CartPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         final ArrayList<Product> data = new ArrayList<>();
+
         final ListView listView = findViewById(R.id.product_cart_view);
-        Button movehomeBtn;
         final Button deleteBtn = findViewById(R.id.cart_delete_btn);
-        Button movepayBtn;
+        final Button mvhomeBtn = findViewById(R.id.cart_backhome_btn);
+        final Button mvpayBtn = findViewById(R.id.cart_payment_btn);
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 data.clear();
-                for(DataSnapshot datasnapshot : snapshot.getChildren()) {
+                for (DataSnapshot datasnapshot : snapshot.getChildren()) {
                     Product product = datasnapshot.getValue(Product.class);
                     product.setKey(datasnapshot.getKey());
                     data.add(product);
@@ -53,22 +54,46 @@ public class CartPageActivity extends AppCompatActivity {
                 deleteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        for(Product product : data){
-                            if(product.isCheck()) {
+                        for (Product product : data) {
+                            if (product.isCheck()) {
                                 cartDBRef.child(product.getKey()).removeValue();
-
                             }
                         }
                     }
                 });
+                mvpayBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<Product> conveydata= new ArrayList<>();
+                        for (Product product : data) {
+                            if (product.isCheck()) {
+                                conveydata.add(product);
+                            }
+                        }
+                        Intent intent = new Intent(getApplicationContext(),PayementAcitivity.class);
+                        intent.putExtra("conveydata",conveydata);
+                        startActivity(intent);
+                    }
+                });
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("error");
             }
         };
         cartDBRef.addValueEventListener(mValueEventListener);
-        
+        mvhomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartPageActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
 
 }

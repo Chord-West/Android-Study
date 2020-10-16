@@ -1,29 +1,45 @@
 package com.example.personalassignment.model;
 
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Product {
+
+public class Product implements Parcelable{
     private String title;
     private String price;
     private String category;
     private boolean check=false;
     private String key;
-    public Product(){
-
-    }
     public Product(String title, String price, String category) {
         this.title = title;
         this.price = price;
         this.category = category;
     }
-    public Product(String title, String price, String category,String key) {
-        this.title = title;
-        this.price = price;
-        this.category = category;
-        this.key=key;
+    public Product(){}
+
+    public Product(Parcel in) {
+        title = in.readString();
+        price = in.readString();
+        category = in.readString();
+        check = in.readByte() != 0;
+        key = in.readString();
     }
 
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public String getKey() {
         return key;
@@ -81,4 +97,18 @@ public class Product {
         return result;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(price);
+        dest.writeString(category);
+        dest.writeByte((byte) (check ? 1 : 0));
+        dest.writeString(key);
+    }
 }

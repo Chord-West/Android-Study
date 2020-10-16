@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CartAdapter extends BaseAdapter {
+public class PaymentAdapter extends BaseAdapter {
     private List<Product> mData;
     private Map<String,Integer> mProductImageMap;
 
-    public CartAdapter(List<Product> data){
+    public PaymentAdapter(List<Product> data){
         this.mData=data;
         mProductImageMap = new HashMap<>();
         mProductImageMap.put("outer", R.drawable.outer);
@@ -51,11 +51,9 @@ public class CartAdapter extends BaseAdapter {
             ImageView productImage = convertView.findViewById(R.id.product_image);
             TextView productTitle= convertView.findViewById(R.id.product_title);
             TextView productPrice= convertView.findViewById(R.id.product_price);
-            CheckBox checkBox = convertView.findViewById(R.id.checkBox);
             holder.productImage=productImage;
             holder.productTitle=productTitle;
             holder.productPrice= productPrice;
-            holder.checkBox=checkBox;
             convertView.setTag(holder);
         }else{
             holder = (ProductAdapter.ViewHolder) convertView.getTag();
@@ -64,17 +62,6 @@ public class CartAdapter extends BaseAdapter {
         holder.productTitle.setText(product.getTitle());
         holder.productPrice.setText(product.getPrice());
         holder.productImage.setImageResource(mProductImageMap.get(product.getCategory()));
-        holder.checkBox.setChecked(product.isCheck());
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean newState = !mData.get(position).isCheck();
-                mData.get(position).setCheck(newState);
-                System.out.println(newState);
-                String ex=mData.get(position).getKey();
-
-            }
-        });
         return convertView;
     }
 }
