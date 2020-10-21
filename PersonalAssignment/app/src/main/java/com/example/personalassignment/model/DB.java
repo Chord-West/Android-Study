@@ -16,22 +16,7 @@ import java.util.Map;
 public class DB {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mDatabase=database.getReference();
-    DatabaseReference cartDBRef = database.getReference().child("data");
     public Map<String,Object> result = new HashMap<>();
-    public DB(){
-        cartDBRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot datasnapshot : snapshot.getChildren()) {
-                    result.put(datasnapshot.getKey(), datasnapshot.getValue());
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
     public void addCartData(String title, String price, String category){
         String key = mDatabase.child("data").push().getKey();
         Product product = new Product(title,price,category);

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PayementAcitivity"
+    tools:context=".PayementActivity"
     android:orientation="horizontal"
     android:columnCount="3"
     android:rowCount="6">
@@ -55,6 +55,7 @@
         android:textSize="20sp"
         />
     <EditText
+        android:id="@+id/address_info"
         android:layout_marginTop="10sp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -69,6 +70,7 @@
         android:textSize="20sp"
         />
     <EditText
+        android:id="@+id/Phonenumber_info"
         android:layout_marginTop="10sp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -80,11 +82,13 @@
         android:layout_columnSpan="3"
         android:orientation="horizontal">
         <Button
-            android:layout_marginLeft="50sp"
+            android:id="@+id/decide_purchase"
+            android:layout_marginLeft="80sp"
             android:layout_width="100sp"
             android:layout_height="40sp"
             android:text="Purchase"/>
         <Button
+            android:id="@+id/cancle_purchase"
             android:layout_marginLeft="50sp"
             android:layout_width="100sp"
             android:layout_height="40sp"

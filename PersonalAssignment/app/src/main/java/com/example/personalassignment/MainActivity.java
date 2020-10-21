@@ -60,9 +60,14 @@ public class MainActivity extends AppCompatActivity {
                         conveydata.add(product);
                     }
                 }
-                Intent intent = new Intent(getApplicationContext(),PayementAcitivity.class);
-                intent.putExtra("conveydata",conveydata);
-                startActivity(intent);
+                if(conveydata.isEmpty()){
+                    Toast.makeText(MainActivity.this,"제품을 선택해주세요", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), PayementActivity.class);
+                    intent.putExtra("conveydata",conveydata);
+                    startActivity(intent);
+                }
+
             }
         });
     }

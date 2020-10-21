@@ -11,8 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personalassignment.adapter.CartAdapter;
-import com.example.personalassignment.adapter.ProductAdapter;
-import com.example.personalassignment.model.DB;
 import com.example.personalassignment.model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,10 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 public class CartPageActivity extends AppCompatActivity {
 
@@ -70,9 +64,13 @@ public class CartPageActivity extends AppCompatActivity {
                                 conveydata.add(product);
                             }
                         }
-                        Intent intent = new Intent(getApplicationContext(),PayementAcitivity.class);
-                        intent.putExtra("conveydata",conveydata);
-                        startActivity(intent);
+                        if(conveydata.isEmpty()){
+                            Toast.makeText(CartPageActivity.this,"제품을 선택해주세요", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent intent = new Intent(getApplicationContext(), PayementActivity.class);
+                            intent.putExtra("conveydata",conveydata);
+                            startActivity(intent);
+                        }
                     }
                 });
 
